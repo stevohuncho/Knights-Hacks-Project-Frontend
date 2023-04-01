@@ -1,37 +1,73 @@
-import { StyleSheet, Text, View, SafeAreaView, Button, Alert } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Button, Alert, Image } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-export default function App() {
+import { HomeScreen } from './src/components/HomeScreen';
+import { FilterScreen } from './src/components/FilterScreen';
+import { ResultScreen } from './src/components/ResultScreen';
+import { WheelScreen } from './src/components/WheelScreen';
+import { myColors } from './src/styling/MyColors';
+
+
+const Stack = createNativeStackNavigator();
+
+function LogoTitle() {
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.app}>
-        <Text>This will be an app soon</Text>
-        <Button title="Click here for now."
-          onPress={() => {
-            Alert.alert("Hey Guys", "what's up", [
-              { text: "Hello" },
-              { text: "Bye." }
-            ])
-          }
-          } />
-      </View>
-    </SafeAreaView>
+    <Image
+      style={{ width: 50, height: 50 }}
+      source={require('./assets/logo.jpg')}
+    />
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ddd',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  app: {
-    height: 200,
-    width: 200,
-    borderRadius: 200,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
 
-});
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='Home'>
+        <Stack.Screen
+          options=
+          {{
+            headerStyle: {
+              backgroundColor: myColors.brown,
+            },
+            headerTintColor: myColors.white,
+          }}
+          name="Home"
+          component={HomeScreen}
+        />
+        <Stack.Screen options=
+          {{
+            headerStyle: {
+              backgroundColor: myColors.brown,
+            },
+            headerTintColor: myColors.white,
+          }}
+          name="Search"
+          component={FilterScreen}
+        />
+        <Stack.Screen options=
+          {{
+            headerStyle: {
+              backgroundColor: myColors.brown,
+            },
+            headerTintColor: myColors.white,
+          }}
+          name="Results"
+          component={ResultScreen}
+        />
+        <Stack.Screen options=
+          {{
+            headerStyle: {
+              backgroundColor: myColors.brown,
+            },
+            headerTintColor: myColors.white,
+          }}
+          name="Wheel"
+          component={WheelScreen}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
