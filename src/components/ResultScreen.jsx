@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 /*
     Task 1: 
         - change line 27 (fetch request) to be formated with the users coordinates
-            - ex: `http://54.164.138.55/nearme?lat=${userLat}&long=${userLong}`
+            - ex: `http://54.90.3.82/nearme?lat=${userLat}&long=${userLong}`
     Task 2: 
         - fix the css with the results components
             - add text overflow handling 
@@ -30,7 +30,7 @@ import { useEffect, useState } from 'react';
                     "price_level": 2,
                     "rating": 4.5
                 }
-            - id is used with http://54.164.138.55/restaurant?id=${restuarantId}
+            - id is used with http://54.90.3.82/restaurant?id=${restuarantId}
                 - this returns more detailed data for the restaurant like hours of operation etc.
             - price level represents how many $'s
             - doesn't give distance away but rather puts address
@@ -54,7 +54,7 @@ export const ResultScreen = ({ navigation }) => {
 
             // send request to api
             try {
-                var resp = await fetch("http://54.164.138.55/nearme?lat=28.5970378&long=-81.2276083");
+                var resp = await fetch("http://54.90.3.82/nearme?lat=28.5970378&long=-81.2276083");
                 // check for success status code
                 if (resp.status != 200) {
                     returnData.error = `failed to send results request. status code: ${resp.status}`;
