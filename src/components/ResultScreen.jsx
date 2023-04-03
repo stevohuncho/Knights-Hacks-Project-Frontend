@@ -15,20 +15,23 @@ import { useEffect, useState } from 'react';
         - work on formating restaurant data in Result component
         - current restuarant data from request
             - ex:   
-                "4 Rivers Smokehouse": {
-                    "address": "11764 University Boulevard, Orlando",
-                    "id": "ChIJbzG0T41o54gRfTWeGQ6o7Ew",
+                "Lazy Moon Pizza": {
+                    "price_level": 1,
+                    "rating": 4.6,
+                    "num_of_ratings": 3251,
                     "keywords": [
                         "restaurant",
                         "food",
                         "point_of_interest",
-                        "store",
                         "establishment"
                     ],
-                    "num_of_ratings": 2564,
-                    "price_level": 2,
-                    "rating": 4.5
-                }
+                    "address": "11551 University Boulevard, Orlando",
+                    "id": "ChIJn6P2NfVo54gRjwL_crPfhyQ",
+                    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+                    "open": true,
+                    "lat": 28.5983402,
+                    "long": -81.21946129999999
+                },
             - id is used with http://54.90.3.82/restaurant?id=${restuarantId}
                 - this returns more detailed data for the restaurant like hours of operation etc.
             - price level represents how many $'s
@@ -43,9 +46,14 @@ export const ResultScreen = ({ navigation, route }) => {
     const [nextPageToken, setNextPageToken] = useState('');
     const dollars = ["$", "$$", "$$$", "$$$$"];
     const { location, price, miles } = route.params;
+    const userLat = location?.coords?.latitude;
+    const userLong = location?.coords?.longitude;
 
+
+    // if u log an object + string it says [Object object] instead of the actual data
     console.log("Miles: " + miles)
-    console.log("Location: " + location)
+    console.log(location)
+    console.log(userLat, userLong)
     console.log("Price: " + price)
     // hook runs on initialization
     useEffect(() => {
@@ -58,7 +66,7 @@ export const ResultScreen = ({ navigation, route }) => {
 
             // send request to api
             try {
-                var resp = await fetch("http://54.90.3.82/nearme?lat=28.5970378&long=-81.2276083");
+                var resp = await fetch(`http://54.90.3.82/nearme?lat=${userLat}&long=${userLong}`);
                 // check for success status code
                 if (resp.status != 200) {
                     returnData.error = `failed to send results request. status code: ${resp.status}`;
