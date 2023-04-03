@@ -1,9 +1,8 @@
-import { Text, View, } from 'react-native';
+import { ScrollView, Text, View, } from 'react-native';
 import { myStyles } from '../styling/GlobalStyles';
 import { Button } from './Button';
 import { Result } from './Result';
 import { useEffect, useState } from 'react';
-
 /*
     Task 1: 
         - change line 27 (fetch request) to be formated with the users coordinates
@@ -39,10 +38,15 @@ import { useEffect, useState } from 'react';
                 - ill find a way to add it to the response so u dont have to (this is why not priority)
 */
 
-export const ResultScreen = ({ navigation }) => {
+export const ResultScreen = ({ navigation, route }) => {
     const [results, setResults] = useState({});
     const [nextPageToken, setNextPageToken] = useState('');
+    const dollars = ["$", "$$", "$$$", "$$$$"];
+    const { location, price, miles } = route.params;
 
+    console.log("Miles: " + miles)
+    console.log("Location: " + location)
+    console.log("Price: " + price)
     // hook runs on initialization
     useEffect(() => {
         async function getResults() {
@@ -90,9 +94,17 @@ export const ResultScreen = ({ navigation }) => {
     return (
         <View style={myStyles.screen}>
             <Text style={myStyles.text}>Result Screen</Text>
-            {Object.entries(results).map(([key, value]) => ( /* creates Result component for each restuarant in results  */
-                <Result Restaurant={key} Distance={value['address']} Price={String(value['price_level'])} />
-            ))}
+            <ScrollView style={myStyles.resultSet}>
+                {Object.entries(results).map(([key, value]) => ( /* creates Result component for each restuarant in results  */
+                    <Result
+                        key={key}
+                        Restaurant={key}
+                        Distance={value['address']}
+                        Price={dollars[String(value['price_level'])]}
+                    />
+                ))}
+            </ScrollView>
+
             <View style={myStyles.buttonRow}>
                 <Button title="Go back" onPress={() => navigation.goBack()} />
                 <Button title="Spin the Wheel!" onPress={() => navigation.navigate('Wheel')} />

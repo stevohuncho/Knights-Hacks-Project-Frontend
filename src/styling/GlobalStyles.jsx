@@ -19,6 +19,7 @@ export const myStyles = StyleSheet.create({
     },
     buttonRow:
     {
+        flex: .25,
         width: "100%",
         alignItems: 'center',
         justifyContent: 'space-evenly',
@@ -60,28 +61,36 @@ export const myStyles = StyleSheet.create({
     },
     result:
     {
-        flexDirection: "row",
+        flexDirection: "column",
         alignItems: "center",
         justifyContent: "space-between",
         backgroundColor: myColors.white,
         width: "90%",
         borderRadius: 10,
         height: undefined,
-        aspectRatio: 5,
+        aspectRatio: 3,
         padding: 20,
+    },
+    resultSet:
+    {
+        flex: .8,
+        overflow: "scroll"
+    },
+    resultTitle:
+    {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-evenly"
+
     },
     restaurant:
     {
-        fontSize: 30,
+        fontSize: 20,
 
     },
     details:
     {
         fontSize: 16,
-    },
-    price:
-    {
-        alignItems: "center",
     },
     priceText:
     {
