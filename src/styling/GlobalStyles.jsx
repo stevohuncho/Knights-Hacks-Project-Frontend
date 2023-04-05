@@ -65,22 +65,27 @@ export const myStyles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "space-between",
         backgroundColor: myColors.white,
-        width: "90%",
+        width: "100%",
         borderRadius: 10,
         height: undefined,
-        aspectRatio: 3,
+        aspectRatio: 3.5,
         padding: 20,
+        marginBottom: 5,
     },
     resultSet:
     {
-        flex: .8,
-        overflow: "scroll"
+        flex: .75,
+        width: "98%",
+        overflow: "scroll",
+        borderWidth: 2,
+        backgroundColor: myColors.brown,
     },
     resultTitle:
     {
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "space-evenly"
+        justifyContent: "space-between",
+        width: "100%",
 
     },
     restaurant:
