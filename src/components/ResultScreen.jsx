@@ -44,7 +44,7 @@ import { useEffect, useState } from 'react';
 export const ResultScreen = ({ navigation, route }) => {
     const [results, setResults] = useState({});
     const [nextPageToken, setNextPageToken] = useState('');
-    const dollars = ["$", "$$", "$$$", "$$$$"];
+    const dollars = ["","$", "$$", "$$$", "$$$$"];
     const { location, price, miles } = route.params;
     const userLat = location?.coords?.latitude;
     const userLong = location?.coords?.longitude;
@@ -101,7 +101,6 @@ export const ResultScreen = ({ navigation, route }) => {
 
     return (
         <View style={myStyles.screen}>
-            <Text style={myStyles.text}>Result Screen</Text>
             <ScrollView style={myStyles.resultSet}>
                 {Object.entries(results).map(([key, value]) => ( /* creates Result component for each restuarant in results  */
                     <Result
@@ -109,6 +108,7 @@ export const ResultScreen = ({ navigation, route }) => {
                         Restaurant={key}
                         Distance={value['address']}
                         Price={dollars[String(value['price_level'])]}
+                        Rating={value['rating']}
                     />
                 ))}
             </ScrollView>

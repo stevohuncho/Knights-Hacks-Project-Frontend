@@ -8,11 +8,12 @@ export const myStyles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-evenly',
         backgroundColor: myColors.light,
+        padding: 5,
     },
     logo:
     {
         height: undefined,
-        width: "60%",
+        width: "80%",
         aspectRatio: 1,
         resizeMode: "stretch",
         borderRadius: "50%",
@@ -34,6 +35,10 @@ export const myStyles = StyleSheet.create({
         width: '45%',
         aspectRatio: 4.8,
         borderRadius: 10,
+        shadowRadius: 2,
+        shadowColor: myColors.black,
+        shadowOffset: {width: -2, height: 4},
+        shadowOpacity: 0.1,
     },
     buttonText:
     {
@@ -71,34 +76,49 @@ export const myStyles = StyleSheet.create({
         aspectRatio: 3.5,
         padding: 20,
         marginBottom: 5,
+        overflow: "hidden",
     },
     resultSet:
     {
         flex: .75,
         width: "98%",
         overflow: "scroll",
-        borderWidth: 2,
-        backgroundColor: myColors.brown,
+        borderRadius: 10,
+        backgroundColor: myColors.tan,
+        padding: 3,
     },
-    resultTitle:
+    resultCol:
     {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
         width: "100%",
-
+        
     },
     restaurant:
     {
-        fontSize: 20,
+        flex: 6,
+        fontSize: 24,
+        marginHorizontal: 8,
 
+    },
+    price:
+    {
+        flex: 1,
+        fontSize: 20,
+        marginHorizontal: 8,
+        justifyContent: "flex-end",
+        textAlign: "center",
     },
     details:
     {
+        flex: 6,
         fontSize: 16,
     },
     priceText:
     {
+        width: "100%",
         fontSize: 30,
+        textAlign: "center"
     }
 })

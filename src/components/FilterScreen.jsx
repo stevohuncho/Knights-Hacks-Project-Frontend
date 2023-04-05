@@ -14,8 +14,8 @@ let mi
 export const FilterScreen = ({ navigation }) => {
     const [location, setLocation] = useState();
     const [miles, setMiles] = useState(0);
-    const [value, setValue] = useState(0);
-    const dollars = ["$", "$$", "$$$", "$$$$"]
+    const [value, setValue] = useState(1);
+    const dollars = ["","$", "$$", "$$$", "$$$$"]
 
 
     useEffect(() => {
@@ -36,9 +36,8 @@ export const FilterScreen = ({ navigation }) => {
 
     return (
         <View style={myStyles.screen}>
-            <Text style={myStyles.text}>Filter Screen</Text>
             <View>
-                <View style={myStyles.price}>
+                <View>
                     <Text style={myStyles.priceText}>Mile Range: {miles}</Text>
                     <Slider
                         style={{ width: 300, height: 60 }}
@@ -51,7 +50,7 @@ export const FilterScreen = ({ navigation }) => {
                     />
                 </View>
 
-                <View style={myStyles.price}>
+                <View>
                     <Text style={myStyles.priceText}>Price Range: {dollars[value]}</Text>
                     <Slider
                         style={{ width: 300, height: 60 }}
@@ -60,7 +59,7 @@ export const FilterScreen = ({ navigation }) => {
                         minimumTrackTintColor={myColors.brown}
                         maximumTrackTintColor={myColors.tan}
                         thumbTintColor={myColors.green}
-                        onValueChange={(val) => setValue(Math.floor(val * 3))}
+                        onValueChange={(val) => setValue(Math.floor(val * 3) + 1)}
                     />
                 </View>
             </View>
