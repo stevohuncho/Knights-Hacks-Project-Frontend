@@ -66,7 +66,7 @@ export const ResultScreen = ({ navigation, route }) => {
 
             // send request to api
             try {
-                var resp = await fetch(`http://54.90.3.82/nearme?lat=${userLat}&long=${userLong}`);
+                var resp = await fetch(`http://54.90.3.82/nearme?lat=${userLat}&long=${userLong}&min=${0}&max=${price}&miles=${miles}`);
                 // check for success status code
                 if (resp.status != 200) {
                     returnData.error = `failed to send results request. status code: ${resp.status}`;
