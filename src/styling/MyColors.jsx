@@ -7,5 +7,5 @@ export const myColors = {
     orange: "#EE965E",
     white: "#fff",
     black: "#000",
-
+    liGreen: "#D9EBC1",
 }

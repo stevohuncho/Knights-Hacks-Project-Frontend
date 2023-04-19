@@ -44,10 +44,11 @@ import { useEffect, useState } from 'react';
 export const ResultScreen = ({ navigation, route }) => {
     const [results, setResults] = useState({});
     const [nextPageToken, setNextPageToken] = useState('');
-    const dollars = ["","$", "$$", "$$$", "$$$$"];
+    const dollars = ["", "$", "$$", "$$$", "$$$$"];
     const { location, price, miles } = route.params;
     const userLat = location?.coords?.latitude;
     const userLong = location?.coords?.longitude;
+    const mySet = new Set();
 
 
     // if u log an object + string it says [Object object] instead of the actual data
@@ -109,6 +110,7 @@ export const ResultScreen = ({ navigation, route }) => {
                         Distance={value['address']}
                         Price={dollars[String(value['price_level'])]}
                         Rating={value['rating']}
+                        onPress={() => { mySet.add(key), console.log("Key added: " + key) }}
                     />
                 ))}
             </ScrollView>
