@@ -66,13 +66,14 @@ export const myStyles = StyleSheet.create({
     },
     result:
     {
+        
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "space-between",
         backgroundColor: myColors.white,
         width: "100%",
         borderRadius: 10,
-        height: undefined,
+        height: 200,
         aspectRatio: 3.5,
         padding: 20,
         marginBottom: 5,
@@ -84,7 +85,7 @@ export const myStyles = StyleSheet.create({
         width: "98%",
         overflow: "scroll",
         borderRadius: 10,
-        backgroundColor: myColors.tan,
+        backgroundColor: myColors.white,
         padding: 3,
     },
     resultCol:

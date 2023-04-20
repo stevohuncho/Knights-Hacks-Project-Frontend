@@ -29,10 +29,7 @@ export default function App() {
         <Stack.Screen
           options=
           {{
-            headerStyle: {
-              backgroundColor: myColors.brown,
-            },
-            headerTintColor: myColors.white,
+            headerShown: false
           }}
           name="Home"
           component={HomeScreen}

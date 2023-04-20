@@ -8,11 +8,8 @@ import { myColors } from '../styling/MyColors';
 import { Button } from './Button';
 import Slider from '@react-native-community/slider';
 
-let pr
-let loc
-let mi
 export const FilterScreen = ({ navigation }) => {
-    const [location, setLocation] = useState();
+    const [location, setLocation] = useState({});
     const [miles, setMiles] = useState(0);
     const [value, setValue] = useState(1);
     const dollars = ["","$", "$$", "$$$", "$$$$"]
@@ -36,6 +33,7 @@ export const FilterScreen = ({ navigation }) => {
 
     return (
         <View style={myStyles.screen}>
+            <Text style={[myStyles.text, {textAlign: "center", fontSize: "20", margin: 10, backgroundColor: myColors.light, color: myColors.black, padding: 15, }]}>Welcome To Choose Chews! Here you can select the radius from your locations of restuarants that you are interested in. Additionally use the Price Slider to select the maximum value of your desired price range.</Text>
             <View>
                 <View>
                     <Text style={myStyles.priceText}>Mile Range: {miles}</Text>
@@ -66,11 +64,13 @@ export const FilterScreen = ({ navigation }) => {
 
 
             <Button title="See Results" onPress={() => {
-                navigation.navigate('Results', {
-                    location: location,
-                    price: value,
-                    miles: miles,
-                })
+                if (location?.coords != undefined) {
+                    navigation.navigate('Results', {
+                        location: location,
+                        price: value,
+                        miles: miles,
+                    })
+                }
             }} />
         </View>
     );
